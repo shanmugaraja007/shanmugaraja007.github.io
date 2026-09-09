@@ -31,108 +31,108 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--bg);color:var(--fg);
-  font-family:var(--sans);font-size:19px;line-height:1.62;font-weight:400;
+  font-family:var(--sans);font-size:20.5px;line-height:1.62;font-weight:400;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
 a{color:var(--fg);text-decoration:none;border-bottom:1px solid #4a4a4f}
 a:hover{color:var(--accent);border-bottom-color:var(--accent-dim)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1300px;margin:0 auto;padding:0 32px}
 
 /* ---------- hero ---------- */
 header{padding:60px 0 8px}
-h1{font-size:50px;font-weight:600;line-height:1.2;letter-spacing:-.01em;text-align:center;margin:0 0 28px}
-.intro{display:flex;gap:42px;align-items:flex-start}
+h1{font-size:58px;font-weight:600;line-height:1.2;letter-spacing:-.01em;text-align:center;margin:0 0 28px}
+.intro{display:flex;gap:52px;align-items:flex-start}
 .intro .bio{flex:1 1 auto;min-width:0}
 .intro .bio p{margin:0 0 16px;color:#dcdce0}
 .intro .bio p:last-of-type{margin-bottom:0}
-.shot{flex:0 0 330px;width:330px;height:330px;border-radius:12%;overflow:hidden;background:#111}
+.shot{flex:0 0 384px;width:384px;height:384px;border-radius:12%;overflow:hidden;background:#111}
 .shot img{width:100%;height:100%;object-fit:cover}
 .status{
   display:inline-flex;align-items:center;gap:8px;margin-top:18px;
   padding:4px 13px;border:1px solid var(--accent-dim);border-radius:999px;
-  font-family:var(--mono);font-size:14.5px;color:var(--accent);
+  font-family:var(--mono);font-size:15.5px;color:var(--accent);
 }
 .status .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(125,211,160,.16)}
-.social{margin:32px 0 0;text-align:center;color:var(--faint);font-size:19px}
+.social{margin:34px 0 0;text-align:center;color:var(--faint);font-size:20.5px}
 .social span{margin:0 8px;color:#3c3c42}
 
 /* ---------- affiliation row ---------- */
-.affil{display:flex;flex-wrap:wrap;justify-content:center;gap:34px;margin:38px 0 0}
-.affil .a{width:174px;text-align:center;border:none}
+.affil{display:flex;flex-wrap:wrap;justify-content:center;gap:44px;margin:42px 0 0}
+.affil .a{width:196px;text-align:center;border:none}
 .affil .tile{
-  width:100px;height:100px;margin:0 auto 13px;border-radius:11px;
-  background:#fff;display:flex;align-items:center;justify-content:center;padding:15px;
+  width:114px;height:114px;margin:0 auto 14px;border-radius:12px;
+  background:#fff;display:flex;align-items:center;justify-content:center;padding:17px;
   transition:transform .18s ease;
 }
 .affil .a:hover .tile{transform:translateY(-3px)}
 .affil .tile img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.affil .mono{font-weight:700;font-size:23px;color:#123;letter-spacing:-.02em}
-.affil .nm{font-size:16px;font-weight:700;line-height:1.35}
-.affil .rl{font-size:14.5px;color:var(--dim);line-height:1.4;margin-top:2px}
-.affil .yr{font-size:14.5px;color:var(--faint);line-height:1.4}
+.affil .mono{font-weight:700;font-size:26px;color:#123;letter-spacing:-.02em}
+.affil .nm{font-size:17.5px;font-weight:700;line-height:1.35}
+.affil .rl{font-size:15.5px;color:var(--dim);line-height:1.4;margin-top:2px}
+.affil .yr{font-size:15.5px;color:var(--faint);line-height:1.4}
 
 /* ---------- sections ---------- */
 section{padding:48px 0 4px}
-h2{font-size:37px;font-weight:600;line-height:1.19;letter-spacing:-.015em;margin:0 0 18px}
-.lead{color:var(--dim);margin:0 0 30px;max-width:68ch;font-size:18.5px}
+h2{font-size:42px;font-weight:600;line-height:1.19;letter-spacing:-.015em;margin:0 0 18px}
+.lead{color:var(--dim);margin:0 0 32px;max-width:86ch;font-size:20px}
 .lead b{color:var(--fg);font-weight:600}
 
 /* news */
-.news{border:1px solid var(--line);border-radius:10px;background:var(--card);max-height:320px;overflow-y:auto}
-.news .row{display:flex;gap:24px;padding:15px 22px;border-bottom:1px solid var(--line)}
+.news{border:1px solid var(--line);border-radius:10px;background:var(--card);max-height:360px;overflow-y:auto}
+.news .row{display:flex;gap:28px;padding:17px 26px;border-bottom:1px solid var(--line)}
 .news .row:last-child{border-bottom:none}
-.news .d{flex:0 0 84px;font-size:14px;color:var(--faint);padding-top:3px;white-space:nowrap}
-.news .t{font-size:17.5px;color:#d6d6da}
+.news .d{flex:0 0 94px;font-size:15px;color:var(--faint);padding-top:3px;white-space:nowrap}
+.news .t{font-size:19px;color:#d6d6da}
 
 /* entry rows */
-.entry{display:flex;gap:28px;padding:20px 0;align-items:flex-start}
-.thumb{flex:0 0 260px;width:260px;height:260px;border-radius:7px;overflow:hidden;background:#0d0d0f;border:1px solid var(--line)}
+.entry{display:flex;gap:34px;padding:24px 0;align-items:flex-start}
+.thumb{flex:0 0 304px;width:304px;height:304px;border-radius:8px;overflow:hidden;background:#0d0d0f;border:1px solid var(--line)}
 .thumb img,.thumb svg,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
 .thumb.logo{display:flex;align-items:center;justify-content:center;background:#0f0f11}
-.thumb.logo .lt{width:176px;height:98px;background:#fff;border-radius:9px;padding:12px 15px;display:flex;align-items:center;justify-content:center}
+.thumb.logo .lt{width:206px;height:114px;background:#fff;border-radius:9px;padding:12px 15px;display:flex;align-items:center;justify-content:center}
 .thumb.logo .lt img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .entry .body{flex:1 1 auto;min-width:0}
-.ttl{font-size:20px;font-weight:600;line-height:1.35;margin:0 0 4px}
+.ttl{font-size:22px;font-weight:600;line-height:1.35;margin:0 0 4px}
 .ttl .hl{background:rgba(125,211,160,.18);box-shadow:0 0 0 2px rgba(125,211,160,.18);border-radius:2px}
-.meta{font-size:17.5px;color:var(--dim);margin:0 0 1px}
+.meta{font-size:19px;color:var(--dim);margin:0 0 1px}
 .meta b{color:var(--fg);font-weight:600}
-.venue{font-size:16.5px;color:var(--faint);margin:0}
-.desc{font-size:17.5px;color:var(--dim);margin:8px 0 0}
+.venue{font-size:18px;color:var(--faint);margin:0}
+.desc{font-size:19px;color:var(--dim);margin:9px 0 0;max-width:92ch}
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
-.pill{font-size:14px;color:var(--dim);background:#1a1a1e;border:1px solid var(--line);border-radius:5px;padding:4px 11px;white-space:nowrap}
+.pill{font-size:15px;color:var(--dim);background:#1a1a1e;border:1px solid var(--line);border-radius:6px;padding:5px 12px;white-space:nowrap}
 a.pill{border-bottom:1px solid var(--line)}
 a.pill:hover{color:var(--accent);border-color:var(--accent-dim);background:#16211b}
 .pill.k{color:var(--faint)}
 
 /* metrics */
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:11px;margin-top:18px}
-.metric{border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:var(--card)}
-.metric .v{font-family:var(--mono);font-size:21px;color:var(--accent);line-height:1.2;white-space:nowrap}
-.metric .v.sm{font-size:17px}
-.metric .k{font-size:14px;color:var(--faint);margin-top:4px;line-height:1.35}
-.note{font-size:17.5px;color:var(--dim);margin:20px 0 0;max-width:74ch}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:12px;margin-top:20px}
+.metric{border:1px solid var(--line);border-radius:8px;padding:15px 17px;background:var(--card)}
+.metric .v{font-family:var(--mono);font-size:23px;color:var(--accent);line-height:1.2;white-space:nowrap}
+.metric .v.sm{font-size:18.5px}
+.metric .k{font-size:15px;color:var(--faint);margin-top:4px;line-height:1.35}
+.note{font-size:19px;color:var(--dim);margin:22px 0 0;max-width:92ch}
 
 /* tables */
-.tbl{display:grid;grid-template-columns:190px 1fr;gap:19px 26px;font-size:17.5px;margin-top:4px}
-.tbl dt{color:var(--faint);font-size:15px;padding-top:2px}
+.tbl{display:grid;grid-template-columns:212px 1fr;gap:21px 30px;font-size:19px;margin-top:4px}
+.tbl dt{color:var(--faint);font-size:16px;padding-top:2px}
 .tbl dd{margin:0;color:var(--dim)}
 .tbl dd b{color:var(--fg);font-weight:600}
-.awards .row{display:flex;gap:26px;padding:10px 0;font-size:17.5px}
-.awards .d{flex:0 0 96px;color:var(--faint);font-size:15px;padding-top:1px;white-space:nowrap}
+.awards .row{display:flex;gap:30px;padding:11px 0;font-size:19px}
+.awards .d{flex:0 0 108px;color:var(--faint);font-size:16px;padding-top:1px;white-space:nowrap}
 .awards .t{color:var(--dim)}
 
-footer{margin-top:64px;padding:26px 0 68px;text-align:center;color:var(--faint);font-size:15px}
+footer{margin-top:64px;padding:26px 0 68px;text-align:center;color:var(--faint);font-size:16px}
 footer a{border-bottom-color:#333}
 
 @media (max-width:720px){
   header{padding:42px 0 4px}
-  h1{font-size:34px;margin-bottom:22px}
-  h2{font-size:30px}
+  h1{font-size:36px;margin-bottom:22px}
+  h2{font-size:32px}
   .intro{flex-direction:column-reverse;align-items:center;gap:26px}
-  .shot{flex:0 0 auto;width:230px;height:230px}
+  .shot{flex:0 0 auto;width:240px;height:240px}
   .affil{gap:20px}
-  .affil .a{width:128px}
+  .affil .a{width:134px}
   .entry{flex-direction:column;gap:14px}
   .thumb{flex:0 0 auto;width:100%;max-width:340px;height:auto;aspect-ratio:1/1}
   .tbl{grid-template-columns:1fr;gap:3px 0}
@@ -380,25 +380,7 @@ footer a{border-bottom-color:#333}
   <!-- 3 -->
   <div class="entry">
     <div class="thumb">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lane following in CARLA with lateral error and PID steering">
-        <rect width="200" height="200" fill="#0b0d0f"/>
-        <path d="M0 200 L74 78 L126 78 L200 200 Z" fill="#191d20"/>
-        <path d="M0 200 L74 78" stroke="#e6e6e6" stroke-width="2.5" opacity=".8"/>
-        <path d="M200 200 L126 78" stroke="#e6e6e6" stroke-width="2.5" opacity=".8"/>
-        <g stroke="#f0c86a" stroke-width="3" opacity=".9" stroke-linecap="round">
-          <path d="M100 196 v-16"/><path d="M100 166 v-13"/><path d="M100 140 v-11"/><path d="M100 118 v-9"/><path d="M100 100 v-8"/><path d="M100 85 v-6"/>
-        </g>
-        <path d="M0 78 L200 78" stroke="#2a3033" stroke-width="1"/>
-        <rect x="0" y="0" width="200" height="78" fill="#101619"/>
-        <g opacity=".5"><circle cx="34" cy="34" r="14" fill="#1c2a24"/><circle cx="168" cy="28" r="17" fill="#1c2a24"/></g>
-        <path d="M116 200 C114 168 110 140 104 118" stroke="#7dd3a0" stroke-width="2.4" fill="none" stroke-dasharray="5 4"/>
-        <g stroke="#e0736b" stroke-width="1.6">
-          <path d="M100 158 L114 158"/><path d="M100 154 v8"/><path d="M114 154 v8"/>
-        </g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#8a9a90">
-          <text x="120" y="152">e_lat</text><text x="10" y="192">PID steer</text>
-        </g>
-      </svg>
+      <img src="carla.jpg" alt="CARLA and ROS 2: road network in RViz above, 3D object detection on the camera stream below" loading="lazy">
     </div>
     <div class="body">
       <p class="ttl">Autonomous Driving Perception and Control &middot; CARLA + ROS 2</p>
@@ -409,12 +391,13 @@ footer a{border-bottom-color:#333}
         perception, then closed the loop with longitudinal and lateral control across dynamic urban scenarios.
         Built from the ground up rather than from prebuilt tools: semantic segmentation for reliable lane marking
         detection, classical CV for lane extraction, lane centre and lateral error computed per frame, and a PID
-        controller on steering, debugged through OpenCV views and RViz. Model predictive control is the next step
-        for curves and constraint handling.
+        controller on steering, debugged through OpenCV views and RViz against the loaded road network. Alongside
+        lane following I ran 3D object detection on the camera stream, bounding cars, trucks and bicycles in the
+        scene. Model predictive control is the next step for curves and constraint handling.
       </p>
       <div class="pills">
-        <span class="pill">CARLA</span><span class="pill">ROS 2</span><span class="pill">semantic segmentation</span>
-        <span class="pill">OpenCV</span><span class="pill">PID</span>
+        <span class="pill">CARLA</span><span class="pill">ROS 2</span><span class="pill">3D object detection</span>
+        <span class="pill">semantic segmentation</span><span class="pill">OpenCV</span><span class="pill">RViz</span><span class="pill">PID</span>
       </div>
     </div>
   </div>

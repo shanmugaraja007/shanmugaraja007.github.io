@@ -422,7 +422,7 @@ footer a{border-bottom-color:#333}
   <!-- 4 -->
   <div class="entry">
     <div class="thumb">
-      <video src="slam.mp4" poster="slam-poster.jpg" autoplay loop muted playsinline preload="metadata"
+      <video src="slam.mp4" poster="slam-poster.jpg" autoplay loop muted playsinline
              aria-label="ORB feature matches between consecutive KITTI frames"></video>
     </div>
     <div class="body">
@@ -657,7 +657,23 @@ footer a{border-bottom-color:#333}
 
 </div>
 
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('.thumb video'));
+  if(!vids.length) return;
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still) return;
+  function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.isIntersecting ? play(e.target) : e.target.pause(); });
+    },{rootMargin:'200px 0px',threshold:0.01});
+    vids.forEach(function(v){io.observe(v);});
+  } else { vids.forEach(play); }
+  vids.forEach(function(v){ v.addEventListener('loadeddata',function(){ play(v); }); });
+})();
+</script>
 
 </body>
 </html>

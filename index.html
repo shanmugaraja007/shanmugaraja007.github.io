@@ -88,7 +88,7 @@ h2{font-size:37px;font-weight:600;line-height:1.19;letter-spacing:-.015em;margin
 /* entry rows */
 .entry{display:flex;gap:28px;padding:20px 0;align-items:flex-start}
 .thumb{flex:0 0 260px;width:260px;height:260px;border-radius:7px;overflow:hidden;background:#0d0d0f;border:1px solid var(--line)}
-.thumb img,.thumb svg{width:100%;height:100%;object-fit:cover;display:block}
+.thumb img,.thumb svg,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
 .thumb.logo{display:flex;align-items:center;justify-content:center;background:#0f0f11}
 .thumb.logo .lt{width:176px;height:98px;background:#fff;border-radius:9px;padding:12px 15px;display:flex;align-items:center;justify-content:center}
 .thumb.logo .lt img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
@@ -422,27 +422,8 @@ footer a{border-bottom-color:#333}
   <!-- 4 -->
   <div class="entry">
     <div class="thumb">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ORB feature tracks and sparse 3D reconstruction">
-        <rect width="200" height="200" fill="#0d0d10"/>
-        <g stroke="#7dd3a0" stroke-width="1.4" opacity=".9">
-          <path d="M36 132 l-11 9"/><path d="M66 122 l-8 7"/><path d="M96 116 l-5 5"/>
-          <path d="M126 118 l7 6"/><path d="M156 126 l10 9"/><path d="M50 84 l-6 4"/>
-          <path d="M86 72 l-4 3"/><path d="M124 74 l5 4"/><path d="M160 86 l8 6"/>
-        </g>
-        <g fill="#eafff0">
-          <circle cx="36" cy="132" r="2.4"/><circle cx="66" cy="122" r="2.4"/><circle cx="96" cy="116" r="2.4"/>
-          <circle cx="126" cy="118" r="2.4"/><circle cx="156" cy="126" r="2.4"/>
-          <circle cx="50" cy="84" r="2"/><circle cx="86" cy="72" r="2"/><circle cx="124" cy="74" r="2"/><circle cx="160" cy="86" r="2"/>
-        </g>
-        <g stroke="#f0c86a" stroke-width="1" opacity=".6" fill="none">
-          <circle cx="66" cy="122" r="9"/><circle cx="126" cy="118" r="9"/><circle cx="86" cy="72" r="8"/>
-        </g>
-        <path d="M22 178 C56 172 88 162 128 168 C150 171 166 176 180 172" stroke="#7dd3a0" stroke-width="2" fill="none"/>
-        <g fill="#7dd3a0"><circle cx="22" cy="178" r="3"/><circle cx="76" cy="167" r="3"/><circle cx="128" cy="168" r="3"/><circle cx="180" cy="172" r="3"/></g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          <text x="10" y="20">ORB · KITTI</text><text x="10" y="194">pose graph</text>
-        </g>
-      </svg>
+      <video src="slam.mp4" poster="slam-poster.jpg" autoplay loop muted playsinline preload="metadata"
+             aria-label="ORB feature matches between consecutive KITTI frames"></video>
     </div>
     <div class="body">
       <p class="ttl">Visual SLAM Pipeline in the Style of ORB-SLAM</p>

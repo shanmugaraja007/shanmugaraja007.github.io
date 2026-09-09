@@ -87,13 +87,17 @@ h2{font-size:28px;font-weight:600;line-height:1.19;letter-spacing:0;margin:11.2p
 .news .t{font-size:16px;line-height:1.6;color:#d6d6da}
 
 /* entry rows */
-.entry{display:flex;gap:40px;padding:20px 0;align-items:flex-start}
-.thumb{flex:0 0 240px;width:240px;height:150px;border-radius:6px;overflow:hidden;background:#0d0d0f}
+.entry{display:flex;gap:36px;padding:20px 0;align-items:flex-start}
+.thumb{flex:0 0 268px;width:268px;height:168px;border-radius:6px;overflow:hidden;background:#0d0d0f}
 .thumb img,.thumb svg,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
 .thumb.logo{display:flex;align-items:center;justify-content:center;background:#0f0f11}
-.thumb.logo .lt{width:150px;height:82px;background:#fff;border-radius:8px;padding:10px 13px;display:flex;align-items:center;justify-content:center}
+.thumb.logo .lt{width:168px;height:92px;background:#fff;border-radius:8px;padding:10px 13px;display:flex;align-items:center;justify-content:center}
 .thumb.logo .lt img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .entry .body{flex:1 1 auto;min-width:0}
+.entry.feature{flex-direction:column;gap:16px}
+.entry.feature .wide{width:100%;border-radius:8px;overflow:hidden;background:#0d0d0f;border:1px solid var(--line)}
+.entry.feature .wide img{width:100%;height:auto;display:block}
+.entry.feature .body{width:100%}
 .ttl{font-size:18px;font-weight:600;line-height:1.4;margin:0 0 2px}
 .ttl .hl{background:rgba(125,211,160,.18);box-shadow:0 0 0 2px rgba(125,211,160,.18);border-radius:2px}
 .meta{font-size:16px;line-height:1.6;color:var(--dim);margin:0}
@@ -139,7 +143,7 @@ footer a{border-bottom-color:#333}
   .affil{gap:16px;justify-content:center}
   .affil .a{flex:0 0 110px}
   .entry{flex-direction:column;gap:16px}
-  .thumb{flex:0 0 auto;width:100%;max-width:300px;height:auto;aspect-ratio:8/5}
+  .thumb{flex:0 0 auto;width:100%;max-width:320px;height:auto;aspect-ratio:8/5}
   .tbl{grid-template-columns:1fr;gap:3px 0}
   .tbl dd{margin-bottom:12px}
   .news .row{flex-direction:column;gap:2px}
@@ -438,19 +442,19 @@ footer a{border-bottom-color:#333}
   </div>
 
   <!-- 5 -->
-  <div class="entry">
-    <div class="thumb">
-      <video src="annotation.mp4" poster="annotation-poster.jpg" autoplay loop muted playsinline
-             aria-label="Off road frame wiping to its semantic mask"></video>
+  <div class="entry feature">
+    <div class="wide">
+      <img src="pipeline.gif" alt="Zero shot annotation pipeline: prompt vocabulary, SAM2 mask proposals, region crops, CLIP scoring, mask NMS, export" loading="lazy">
     </div>
     <div class="body">
       <p class="ttl">Automated Annotation &middot; SAM2 + CLIP</p>
       <p class="meta">Zero shot labelling without task specific retraining</p>
       <p class="venue">Foundation models &middot; personal project</p>
       <p class="desc">
-        Combined vision language embeddings with promptable segmentation to label unseen object classes without
-        task specific retraining, cutting manual annotation effort and evaluating generalisation across
-        agricultural and driving scenes.
+        SAM2 proposes class agnostic masks and CLIP supplies the semantic label from a written vocabulary, so a new
+        class costs a line of YAML rather than a labelling campaign. Crops below the score floor are left
+        unlabelled instead of forced into the nearest class, and mask NMS drops the duplicates. Built to cut manual
+        annotation effort and to test how far zero shot perception generalises across agricultural and driving scenes.
       </p>
       <div class="pills">
         <a class="pill" href="https://github.com/shanmugaraja007/zero-shot-annotation" target="_blank" rel="noopener">Code</a>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shanmugaraja Pandiyan</title>
+<meta name="description" content="Shanmugaraja Pandiyan — perception and simulation engineer. Monocular bird's eye view reconstruction, visual odometry, scenario generation for autonomous driving.">
+<meta property="og:title" content="Shanmugaraja Pandiyan">
+<meta property="og:description" content="Perception and simulation for autonomous driving. Monocular BEV reconstruction, visual odometry, scenario generation.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#0d0f12;
+    --panel:#14171c;
+    --line:#242a32;
+    --fg:#e6e9ee;
+    --dim:#9aa4b2;
+    --faint:#6b7482;
+    --accent:#7dd3a0;
+    --accent-dim:#3f7f5c;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:var(--accent-dim)}
+  .wrap{max-width:780px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(13,15,18,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;gap:22px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+  nav .wrap::-webkit-scrollbar{display:none}
+  nav a{
+    color:var(--dim);font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    white-space:nowrap;border-bottom:none;
+  }
+  nav a:hover{color:var(--fg)}
+  nav .me{color:var(--fg);font-weight:600;letter-spacing:0;text-transform:none;font-size:14px;margin-right:auto}
+
+  /* hero */
+  header{padding:64px 0 40px}
+  h1{font-size:38px;line-height:1.15;margin:0 0 6px;letter-spacing:-.02em;font-weight:650}
+  .tagline{color:var(--accent);font-family:var(--mono);font-size:13.5px;letter-spacing:.02em;margin:0 0 22px}
+  .lede{color:var(--dim);font-size:17px;margin:0 0 10px}
+  .lede strong{color:var(--fg);font-weight:600}
+  .status{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:14px;padding:5px 12px;border:1px solid var(--accent-dim);border-radius:999px;
+    font-family:var(--mono);font-size:12.5px;color:var(--accent);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(125,211,160,.15)}
+  .links{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .links a{
+    font-family:var(--mono);font-size:13px;color:var(--dim);
+    border:1px solid var(--line);border-radius:6px;padding:6px 13px;background:var(--panel);
+  }
+  .links a:hover{color:var(--fg);border-color:var(--accent-dim)}
+
+  /* sections */
+  section{padding:44px 0;border-top:1px solid var(--line)}
+  h2{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 26px;font-weight:500;
+  }
+  h3{font-size:17px;margin:0 0 4px;font-weight:600;letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  .muted{color:var(--dim)}
+
+  /* timeline */
+  .item{display:grid;grid-template-columns:132px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:none}
+  .when{font-family:var(--mono);font-size:12.5px;color:var(--faint);padding-top:3px;white-space:nowrap}
+  .where{color:var(--dim);font-size:14.5px;margin:0 0 6px}
+  .where em{font-style:normal;color:var(--faint)}
+  .item p:last-child{margin-bottom:0}
+
+  /* highlight card */
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:24px;margin-bottom:18px;
+  }
+  .card h3{margin-bottom:8px}
+  .kicker{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.05em;margin:0 0 10px}
+  ol.steps{margin:0 0 18px;padding-left:20px;color:var(--dim)}
+  ol.steps li{margin-bottom:5px}
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:20px}
+  .metric{border:1px solid var(--line);border-radius:8px;padding:14px}
+  .metric .v{font-family:var(--mono);font-size:20px;color:var(--fg);line-height:1.2}
+  .metric .k{font-size:12.5px;color:var(--faint);margin-top:5px}
+
+  /* projects */
+  .proj{padding:20px 0;border-bottom:1px solid var(--line)}
+  .proj:last-child{border-bottom:none}
+  .proj p{margin:6px 0 10px;color:var(--dim);font-size:15px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    border:1px solid var(--line);border-radius:4px;padding:2px 8px;
+  }
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:150px 1fr;gap:14px 20px;font-size:15px}
+  .skills dt{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em;padding-top:2px}
+  .skills dd{margin:0;color:var(--dim)}
+
+  footer{padding:36px 0 60px;border-top:1px solid var(--line);color:var(--faint);font-size:13.5px}
+
+  @media (max-width:640px){
+    header{padding:44px 0 32px}
+    h1{font-size:30px}
+    .item{grid-template-columns:1fr;gap:4px}
+    .when{padding-top:0}
+    .skills{grid-template-columns:1fr;gap:4px 0}
+    .skills dd{margin-bottom:12px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="me" href="#top">Shanmugaraja Pandiyan</a>
+    <a href="#experience">Experience</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header>
+    <h1>Shanmugaraja Pandiyan</h1>
+    <p class="tagline">perception &amp; simulation for autonomous driving</p>
+    <p class="lede">
+      I turn recorded camera video into <strong>simulation ready scenarios</strong>. My master thesis built a
+      full monocular pipeline that reconstructs an off road field from a single forward facing camera and
+      exports it as a scenario a driving simulator can replay.
+    </p>
+    <p class="lede">
+      MSc Artificial Intelligence and Robotics. Previously an automotive software developer at Bosch.
+      Based in Wolfsburg, Germany.
+    </p>
+    <span class="status"><span class="dot"></span> Available immediately</span>
+
+    <div class="links">
+      <a href="mailto:shanmugaraja9919@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/shanmugaraja-pandiyan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/shanmugaraja007" target="_blank" rel="noopener">GitHub</a>
+      <a href="cv.pdf">CV</a>
+    </div>
+  </header>
+
+  <section id="experience">
+    <h2>Experience &amp; Education</h2>
+
+    <div class="item">
+      <div class="when">Apr &ndash; Aug 2026</div>
+      <div>
+        <h3>Student Researcher, Autonomous Driving Re-Simulation</h3>
+        <p class="where">IAV GmbH, Berlin <em>&middot; master thesis project</em></p>
+        <p class="muted">
+          Built an end to end monocular pipeline that reconstructs static terrain from a single camera and
+          exports it into a commercial simulation toolchain. Owned segmentation, visual odometry, bird's eye
+          view accumulation, terrain decomposition and scenario export, plus the desktop editor the team uses
+          to correct results by hand.
+        </p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">Oct 2024 &ndash; 2026</div>
+      <div>
+        <h3>MSc Artificial Intelligence &amp; Robotics</h3>
+        <p class="where">Berlin School of Business and Innovation, in collaboration with University for the Creative Arts</p>
+        <p class="muted">
+          Dissertation on monocular bird's eye view reconstruction of off road field scenarios for
+          re-simulation. Roughly 14,900 words, evaluated against GPS ground truth.
+        </p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">2025 &ndash; 2026</div>
+      <div>
+        <h3>Warehouse Assistant</h3>
+        <p class="where">FedEx Berlin <em>&middot; part time alongside studies</em></p>
+        <p class="muted">Parcel handling and scanner based sorting while studying full time in Berlin.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">Earlier</div>
+      <div>
+        <h3>Automotive Software Developer</h3>
+        <p class="where">Bosch Global Software Technologies, India</p>
+        <p class="muted">
+          Production automotive software work. This is where the CAN, embedded and vehicle systems
+          grounding behind the research came from.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+
+    <div class="card">
+      <p class="kicker">MSc dissertation</p>
+      <h3>Monocular Bird's-Eye-View Reconstruction of Off-Road Field Scenarios for Re-Simulation</h3>
+      <p class="muted">
+        Can one uncalibrated looking forward camera on a working agricultural machine give you enough to
+        rebuild the field it drove through, well enough to replay in a simulator? The thesis answers that as a
+        systems and minimum sensor feasibility result rather than a new perception algorithm.
+      </p>
+      <ol class="steps">
+        <li>Semantic segmentation of each frame into terrain, grass and trees</li>
+        <li>Vertical class collapse so tall structure stops smearing across the ground plane</li>
+        <li>Inverse perspective projection into a metric bird's eye view at 0.10 m per pixel</li>
+        <li>Monocular visual odometry for ego pose, with keyframe selection</li>
+        <li>Confidence weighted multi view accumulation into one global map</li>
+        <li>Rectangle decomposition of the map into simulator ready terrain patches and border features</li>
+      </ol>
+      <div class="metrics">
+        <div class="metric"><div class="v">0.43 m</div><div class="k">trajectory ATE, RMSE</div></div>
+        <div class="metric"><div class="v">0.999</div><div class="k">similarity scale vs GPS</div></div>
+        <div class="metric"><div class="v">41.9 / 42.4 m</div><div class="k">estimated vs GPS path length</div></div>
+        <div class="metric"><div class="v">~20&times;</div><div class="k">tree area error reduction from occlusion handling</div></div>
+      </div>
+    </div>
+
+    <p class="muted">
+      Along the way: a systematic 32 percent scale error traced back to a camera height recorded from the
+      axle rather than the ground, a 6.7 second GPS time offset that inflated apparent trajectory error by an
+      order of magnitude, and a 32 bit latitude field in a J1939 message the documentation described as 31.
+      Most of the accuracy came from calibration and timing discipline, not from the model.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="proj">
+      <h3>Monocular BEV reconstruction pipeline</h3>
+      <p>
+        The research pipeline as production code: swappable segmentation backends, depth weighted voting into
+        a global accumulator, motion based keyframe selection, and automatic chaining into terrain patch
+        creation. Runs a full sequence in about 30 minutes on a 4 GB NVIDIA A2000, with FP16 and batching
+        projected to bring that to 5 to 8 minutes.
+      </p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">NumPy</span><span class="tag">semantic segmentation</span></div>
+    </div>
+
+    <div class="proj">
+      <h3>Interactive scenario editor</h3>
+      <p>
+        A desktop tool so an engineer can fix what the pipeline gets wrong instead of rerunning it. Unified
+        trajectory editing, multi select, drag to reshape terrain patches, and a one click export to the
+        scenario format the simulator consumes.
+      </p>
+      <div class="tags"><span class="tag">Tkinter</span><span class="tag">matplotlib</span><span class="tag">UX</span><span class="tag">tooling</span></div>
+    </div>
+
+    <div class="proj">
+      <h3>Trajectory evaluation toolkit</h3>
+      <p>
+        Benchmarking against a public off road dataset with no ROS install anywhere in the loop. Reads bag
+        files directly, decodes NMEA GPS, projects to UTM zone 32N with 0.03 m round trip error, and aligns
+        estimated against ground truth trajectories with Umeyama to report ATE, RPE and scale.
+      </p>
+      <div class="tags"><span class="tag">rosbags</span><span class="tag">UTM</span><span class="tag">Umeyama</span><span class="tag">evaluation</span></div>
+    </div>
+
+    <div class="proj">
+      <h3>Monocular visual odometry</h3>
+      <p>
+        Ego motion from one camera: Harris corner detection, Lucas-Kanade optical flow, and a RANSAC planar
+        motion solver tuned for a vehicle constrained to the ground plane. Built to be debuggable, because
+        every scale bug in the wider pipeline surfaced here first.
+      </p>
+      <div class="tags"><span class="tag">visual odometry</span><span class="tag">RANSAC</span><span class="tag">optical flow</span><span class="tag">calibration</span></div>
+    </div>
+
+    <div class="proj">
+      <h3>Georeferenced map export tool</h3>
+      <p>
+        Zero install utility that turns a GPS track into a georeferenced map image, so recorded routes can be
+        laid over reconstructed terrain and checked by eye against satellite imagery.
+      </p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">geospatial</span><span class="tag">visualisation</span></div>
+    </div>
+
+    <div class="proj">
+      <h3>Smart ring wearable prototype</h3>
+      <p>
+        Hardware side project taken from breadboard to a two board sandwich PCB: ESP32-S3, optical heart rate
+        and temperature sensing, a six axis IMU, a MEMS microphone and external flash. Included reverse
+        engineering the BLE protocol of an existing commercial ring to read its biometric stream.
+      </p>
+      <div class="tags"><span class="tag">ESP32</span><span class="tag">BLE</span><span class="tag">PCB design</span><span class="tag">firmware</span></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Perception</dt>
+      <dd>Semantic segmentation, visual odometry, inverse perspective mapping, multi view fusion, camera calibration, occlusion reasoning</dd>
+
+      <dt>Simulation</dt>
+      <dd>Scenario reconstruction and generation, road network geometry, re-simulation toolchains, OpenDRIVE and OpenSCENARIO concepts</dd>
+
+      <dt>Languages</dt>
+      <dd>Python, C++, C, MATLAB basics, shell</dd>
+
+      <dt>Libraries</dt>
+      <dd>PyTorch, OpenCV, NumPy, SciPy, matplotlib, Tkinter</dd>
+
+      <dt>Vehicle systems</dt>
+      <dd>CAN, J1939 decoding, GPS and IMU data handling, ROS bag processing</dd>
+
+      <dt>Hardware</dt>
+      <dd>ESP32, BLE, I2C and SPI sensor integration, schematic and PCB design</dd>
+
+      <dt>Languages spoken</dt>
+      <dd>English (fluent), Tamil (native), German (learning)</dd>
+    </dl>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="muted">
+      I am looking for perception, computer vision or simulation engineering roles, in Germany or remote,
+      and I can start immediately. Off road and heavy machinery autonomy is where I am most useful, but the
+      interesting part for me is anywhere the sensor data has to become something a system can act on.
+    </p>
+    <div class="links">
+      <a href="mailto:shanmugaraja9919@gmail.com">shanmugaraja9919@gmail.com</a>
+      <a href="https://www.linkedin.com/in/shanmugaraja-pandiyan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/shanmugaraja007" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; <span id="yr">2026</span> Shanmugaraja Pandiyan &middot; Wolfsburg, Germany
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

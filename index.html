@@ -94,10 +94,16 @@ h2{font-size:28px;font-weight:600;line-height:1.19;letter-spacing:0;margin:11.2p
 .thumb.logo .lt{width:168px;height:92px;background:#fff;border-radius:8px;padding:10px 13px;display:flex;align-items:center;justify-content:center}
 .thumb.logo .lt img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .entry .body{flex:1 1 auto;min-width:0}
-.entry.feature{flex-direction:column;gap:16px}
-.entry.feature .wide{width:100%;border-radius:8px;overflow:hidden;background:#0d0d0f;border:1px solid var(--line)}
-.entry.feature .wide img{width:100%;height:auto;display:block}
-.entry.feature .body{width:100%}
+/* stacked entry: heading -> media -> contents */
+.entry.stack{flex-direction:column;gap:14px;padding:26px 0}
+.entry.stack .head,.entry.stack .body{width:100%}
+.entry.stack .wide{
+  width:100%;border-radius:8px;overflow:hidden;line-height:0;
+  background:#0d0d0f;border:1px solid var(--line);
+}
+.entry.stack .wide img,.entry.stack .wide video,.entry.stack .wide svg{
+  width:100%;height:auto;display:block;
+}
 .ttl{font-size:18px;font-weight:600;line-height:1.4;margin:0 0 2px}
 .ttl .hl{background:rgba(125,211,160,.18);box-shadow:0 0 0 2px rgba(125,211,160,.18);border-radius:2px}
 .meta{font-size:16px;line-height:1.6;color:var(--dim);margin:0}
@@ -111,6 +117,8 @@ h2{font-size:28px;font-weight:600;line-height:1.19;letter-spacing:0;margin:11.2p
 }
 a.pill{border-bottom:none}
 a.pill:hover{color:var(--accent);background:rgba(125,211,160,.18)}
+a.pill.gh{display:inline-flex;align-items:center;gap:7px}
+a.pill.gh svg{width:14px;height:14px;display:block;flex:0 0 14px}
 .pill.k{color:var(--dim)}
 
 /* metrics */
@@ -237,14 +245,19 @@ footer a{border-bottom-color:#333}
     how much of the remaining error is calibration and timing rather than the model.
   </p>
 
-  <div class="entry">
-    <div class="thumb">
-      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bird's eye view occupancy map with terrain patches and vehicle trajectory">
-        <rect width="320" height="200" fill="#0b110d"/>
-        <g transform="translate(60,0)">
+  <div class="entry stack">
+    <div class="head">
+      <p class="ttl"><span class="hl">Camera to Simulation Perception and Reconstruction for Autonomous Agricultural and Off Road Machines</span></p>
+      <p class="meta"><b>Shanmugaraja Pandiyan</b></p>
+      <p class="venue">M.Sc. thesis &middot; IAV GmbH, Berlin, 2026</p>
+    </div>
+    <div class="wide">
+      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bird's eye view occupancy map with terrain patches and vehicle trajectory">
+        <rect width="416" height="200" fill="#0b110d"/>
+        <g transform="translate(2,0)">
         <g opacity=".16" stroke="#7dd3a0" stroke-width="1">
-          <path d="M-60 25h320M-60 50h320M-60 75h320M-60 100h320M-60 125h320M-60 150h320M-60 175h320"/>
-          <path d="M-50 0v200M-25 0v200M0 0v200M25 0v200M50 0v200M75 0v200M100 0v200M125 0v200M150 0v200M175 0v200M200 0v200M225 0v200M250 0v200"/>
+          <path d="M-2 25h416M-2 50h416M-2 75h416M-2 100h416M-2 125h416M-2 150h416M-2 175h416"/>
+          <path d="M-2 0v200M23 0v200M48 0v200M73 0v200M98 0v200M123 0v200M148 0v200M173 0v200M198 0v200M223 0v200M248 0v200M273 0v200M298 0v200M323 0v200M348 0v200M373 0v200M398 0v200"/>
         </g>
         <rect x="16" y="22" width="58" height="40" fill="#7dd3a0" opacity=".3"/>
         <rect x="84" y="16" width="44" height="30" fill="#7dd3a0" opacity=".16"/>
@@ -257,15 +270,27 @@ footer a{border-bottom-color:#333}
         <path d="M100 190 C98 156 92 122 82 84" stroke="#eafff0" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
         <circle cx="100" cy="190" r="4.5" fill="#7dd3a0"/>
         <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          <text x="8" y="194">0.10 m / px</text>
+          
         </g>
       </g>
+      
+        <g>
+        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
+        <g font-family="ui-monospace,Menlo,Consolas,monospace">
+        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">BEV OCCUPANCY</text>
+        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
+        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">monocular video + GNSS</text>
+        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
+        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">confidence weighted</text>
+        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
+        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">multi view occupancy</text>
+        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
+        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">0.10 m / px raster</text>
+        </g>
+        </g>
       </svg>
     </div>
     <div class="body">
-      <p class="ttl"><span class="hl">Camera to Simulation Perception and Reconstruction for Autonomous Agricultural and Off Road Machines</span></p>
-      <p class="meta"><b>Shanmugaraja Pandiyan</b></p>
-      <p class="venue">M.Sc. thesis &middot; IAV GmbH, Berlin, 2026</p>
       <p class="desc">
         An end to end perception pipeline converting monocular video and GNSS into metric, simulation ready
         environments with bird's eye view maps, terrain primitives and object trajectories. Confidence weighted
@@ -309,12 +334,17 @@ footer a{border-bottom-color:#333}
   </p>
 
   <!-- 1 -->
-  <div class="entry">
-    <div class="thumb">
-      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile manipulator learning from teleoperated demonstrations">
-        <rect width="320" height="200" fill="#0d0f12"/>
-        <g transform="translate(60,0)">
-        <rect x="-60" y="150" width="320" height="50" fill="#15191c"/>
+  <div class="entry stack">
+    <div class="head">
+      <p class="ttl">Vision Language Action Mobile Manipulation</p>
+      <p class="meta">Behavioural cloning from human demonstrations</p>
+      <p class="venue">Imitation learning &middot; ROS 2 &middot; NVIDIA Isaac Sim</p>
+    </div>
+    <div class="wide">
+      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile manipulator learning from teleoperated demonstrations">
+        <rect width="416" height="200" fill="#0d0f12"/>
+        <g transform="translate(2,0)">
+        <rect x="-2" y="150" width="416" height="50" fill="#15191c"/>
         <rect x="46" y="132" width="62" height="26" rx="5" fill="#1d242a" stroke="#4f9f78" stroke-width="1.2"/>
         <circle cx="60" cy="160" r="8" fill="#222a30" stroke="#4f9f78" stroke-width="1.2"/>
         <circle cx="94" cy="160" r="8" fill="#222a30" stroke="#4f9f78" stroke-width="1.2"/>
@@ -328,15 +358,27 @@ footer a{border-bottom-color:#333}
           <path d="M140 80 C158 88 164 102 160 116"/>
         </g>
         <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          <text x="10" y="22">imitation policy</text><text x="10" y="192">ROS 2 · Isaac Sim</text>
+          
         </g>
       </g>
+      
+        <g>
+        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
+        <g font-family="ui-monospace,Menlo,Consolas,monospace">
+        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">IMITATION POLICY</text>
+        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
+        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">teleoperated demos</text>
+        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
+        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">observation &#8594; action</text>
+        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
+        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">ROS 2 execution</text>
+        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
+        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">Gazebo &#183; Isaac Sim</text>
+        </g>
+        </g>
       </svg>
     </div>
     <div class="body">
-      <p class="ttl">Vision Language Action Mobile Manipulation</p>
-      <p class="meta">Behavioural cloning from human demonstrations</p>
-      <p class="venue">Imitation learning &middot; ROS 2 &middot; NVIDIA Isaac Sim</p>
       <p class="desc">
         A mobile manipulation robot that learns from teleoperated human demonstrations, mapping camera and joint
         state observations directly to actions rather than following hand written trajectories. I collected and
@@ -351,11 +393,16 @@ footer a{border-bottom-color:#333}
   </div>
 
   <!-- 2 -->
-  <div class="entry">
-    <div class="thumb">
-      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile robot with LiDAR scan, GPS, IMU and camera">
-        <rect width="320" height="200" fill="#0c0f11"/>
-        <g transform="translate(60,0)">
+  <div class="entry stack">
+    <div class="head">
+      <p class="ttl">Autonomous Mobile Robot &middot; GPS, IMU, LiDAR and Camera Integration</p>
+      <p class="meta">Full sensor stack built from the platform up</p>
+      <p class="venue">ROS 2 &middot; personal project</p>
+    </div>
+    <div class="wide">
+      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile robot with LiDAR scan, GPS, IMU and camera">
+        <rect width="416" height="200" fill="#0c0f11"/>
+        <g transform="translate(2,0)">
         <g stroke="#7dd3a0" fill="none" opacity=".3">
           <circle cx="100" cy="112" r="34" stroke-width="1"/><circle cx="100" cy="112" r="56" stroke-width="1"/><circle cx="100" cy="112" r="78" stroke-width="1"/>
         </g>
@@ -370,15 +417,27 @@ footer a{border-bottom-color:#333}
         <rect x="76" y="112" width="14" height="10" rx="2" fill="#0f1518" stroke="#f0c86a" stroke-width="1"/>
         <path d="M124 92 l0 -14 M118 82 l6 -6 6 6" stroke="#f0c86a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
         <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          <text x="10" y="22">GPS · IMU · LiDAR · cam</text><text x="10" y="192">EKF fusion · TF2</text>
+          
         </g>
       </g>
+      
+        <g>
+        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
+        <g font-family="ui-monospace,Menlo,Consolas,monospace">
+        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">SENSOR STACK</text>
+        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
+        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">GNSS + IMU &#8594; EKF pose</text>
+        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
+        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">LiDAR + camera fusion</text>
+        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
+        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">TF2 extrinsics</text>
+        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
+        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">time synchronised</text>
+        </g>
+        </g>
       </svg>
     </div>
     <div class="body">
-      <p class="ttl">Autonomous Mobile Robot &middot; GPS, IMU, LiDAR and Camera Integration</p>
-      <p class="meta">Full sensor stack built from the platform up</p>
-      <p class="venue">ROS 2 &middot; personal project</p>
       <p class="desc">
         Built an autonomous mobile robot from the platform up: mounting, wiring and integrating all four sensors
         on ROS 2, calibrating extrinsics and the TF2 frame tree, and time synchronising the streams. GNSS and IMU
@@ -386,21 +445,23 @@ footer a{border-bottom-color:#333}
         navigation behaviour on the real machine.
       </p>
       <div class="pills">
-        <a class="pill" href="https://github.com/shanmugaraja007/Autonomous_Bot" target="_blank" rel="noopener">Code</a>
+        <a class="pill gh" href="https://github.com/shanmugaraja007/Autonomous_Bot" target="_blank" rel="noopener" aria-label="GitHub repository"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
         <span class="pill">ROS 2</span><span class="pill">EKF</span><span class="pill">Nav2</span><span class="pill">calibration</span>
       </div>
     </div>
   </div>
 
   <!-- 3 -->
-  <div class="entry">
-    <div class="thumb">
-      <img src="carla.jpg" alt="CARLA and ROS 2: road network in RViz above, 3D object detection on the camera stream below" loading="lazy">
-    </div>
-    <div class="body">
+  <div class="entry stack">
+    <div class="head">
       <p class="ttl">Autonomous Driving Perception and Control &middot; CARLA + ROS 2</p>
       <p class="meta">Vision based lane following, camera to steering</p>
       <p class="venue">CARLA simulator &middot; ROS bridge &middot; personal project</p>
+    </div>
+    <div class="wide">
+      <img src="carla.jpg" alt="CARLA and ROS 2: road network in RViz above, 3D object detection on the camera stream below" loading="lazy">
+    </div>
+    <div class="body">
       <p class="desc">
         Bridged CARLA with ROS 2 to process synchronised camera, LiDAR, IMU and odometry streams for real time
         perception, then closed the loop with longitudinal and lateral control across dynamic urban scenarios.
@@ -418,15 +479,17 @@ footer a{border-bottom-color:#333}
   </div>
 
   <!-- 4 -->
-  <div class="entry">
-    <div class="thumb">
+  <div class="entry stack">
+    <div class="head">
+      <p class="ttl">Visual SLAM Pipeline in the Style of ORB-SLAM</p>
+      <p class="meta">Built from scratch in Python, validated on KITTI</p>
+      <p class="venue">Monocular SLAM &middot; personal project</p>
+    </div>
+    <div class="wide">
       <video src="slam.mp4" poster="slam-poster.jpg" autoplay loop muted playsinline
              aria-label="ORB feature matches between consecutive KITTI frames"></video>
     </div>
     <div class="body">
-      <p class="ttl">Visual SLAM Pipeline in the Style of ORB-SLAM</p>
-      <p class="meta">Built from scratch in Python, validated on KITTI</p>
-      <p class="venue">Monocular SLAM &middot; personal project</p>
       <p class="desc">
         A foundational visual SLAM system implemented from first principles: FAST keypoint detection with ORB
         descriptors, non maximum suppression and adaptive thresholding for feature quality, brute force Hamming
@@ -435,21 +498,23 @@ footer a{border-bottom-color:#333}
         KITTI outdoor dataset. Bundle adjustment, loop closure and learned detectors are the planned next steps.
       </p>
       <div class="pills">
-        <a class="pill" href="https://github.com/shanmugaraja007/Visual_SLAM" target="_blank" rel="noopener">Code</a>
+        <a class="pill gh" href="https://github.com/shanmugaraja007/Visual_SLAM" target="_blank" rel="noopener" aria-label="GitHub repository"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
         <span class="pill">Python</span><span class="pill">OpenCV</span><span class="pill">ORB</span><span class="pill">KITTI</span>
       </div>
     </div>
   </div>
 
   <!-- 5 -->
-  <div class="entry feature">
+  <div class="entry stack">
+    <div class="head">
+      <p class="ttl">Automated Annotation &middot; SAM2 + CLIP</p>
+      <p class="meta">Zero shot labelling without task specific retraining</p>
+      <p class="venue">Foundation models &middot; personal project</p>
+    </div>
     <div class="wide">
       <img src="pipeline.gif" alt="Zero shot annotation pipeline: prompt vocabulary, SAM2 mask proposals, region crops, CLIP scoring, mask NMS, export" loading="lazy">
     </div>
     <div class="body">
-      <p class="ttl">Automated Annotation &middot; SAM2 + CLIP</p>
-      <p class="meta">Zero shot labelling without task specific retraining</p>
-      <p class="venue">Foundation models &middot; personal project</p>
       <p class="desc">
         SAM2 proposes class agnostic masks and CLIP supplies the semantic label from a written vocabulary, so a new
         class costs a line of YAML rather than a labelling campaign. Crops below the score floor are left
@@ -457,7 +522,7 @@ footer a{border-bottom-color:#333}
         annotation effort and to test how far zero shot perception generalises across agricultural and driving scenes.
       </p>
       <div class="pills">
-        <a class="pill" href="https://github.com/shanmugaraja007/zero-shot-annotation" target="_blank" rel="noopener">Code</a>
+        <a class="pill gh" href="https://github.com/shanmugaraja007/zero-shot-annotation" target="_blank" rel="noopener" aria-label="GitHub repository"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
         <span class="pill">SAM2</span><span class="pill">CLIP</span><span class="pill">Python</span>
         <span class="pill">zero shot perception</span>
       </div>
@@ -465,11 +530,16 @@ footer a{border-bottom-color:#333}
   </div>
 
   <!-- 6 -->
-  <div class="entry">
-    <div class="thumb">
-      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structure from motion and 3D Gaussian splatting reconstruction">
-        <rect width="320" height="200" fill="#0c0d10"/>
-        <g transform="translate(60,0)">
+  <div class="entry stack">
+    <div class="head">
+      <p class="ttl">High Fidelity 3D Reconstruction &middot; Gaussian Splatting and Photogrammetry</p>
+      <p class="meta">Real scenes into simulation ready 3D environments</p>
+      <p class="venue">3D reconstruction &middot; personal project</p>
+    </div>
+    <div class="wide">
+      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Structure from motion and 3D Gaussian splatting reconstruction">
+        <rect width="416" height="200" fill="#0c0d10"/>
+        <g transform="translate(2,0)">
         <g opacity=".85">
           <ellipse cx="76" cy="96" rx="20" ry="13" fill="#7dd3a0" opacity=".3" transform="rotate(-18 76 96)"/>
           <ellipse cx="106" cy="84" rx="24" ry="14" fill="#6ba8e0" opacity=".26" transform="rotate(12 106 84)"/>
@@ -489,15 +559,27 @@ footer a{border-bottom-color:#333}
           <path d="M44 58 L92 104"/><path d="M156 52 L108 96"/><path d="M50 166 L88 126"/>
         </g>
         <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          <text x="10" y="22">COLMAP · SfM</text><text x="10" y="192">3D Gaussian splatting</text>
+          
         </g>
       </g>
+      
+        <g>
+        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
+        <g font-family="ui-monospace,Menlo,Consolas,monospace">
+        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">3D RECONSTRUCTION</text>
+        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
+        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">COLMAP SfM poses</text>
+        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
+        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">3D Gaussian splatting</text>
+        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
+        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">holdout evaluation</text>
+        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
+        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">simulation ready</text>
+        </g>
+        </g>
       </svg>
     </div>
     <div class="body">
-      <p class="ttl">High Fidelity 3D Reconstruction &middot; Gaussian Splatting and Photogrammetry</p>
-      <p class="meta">Real scenes into simulation ready 3D environments</p>
-      <p class="venue">3D reconstruction &middot; personal project</p>
       <p class="desc">
         Ran a full structure from motion and 3D Gaussian splatting pipeline, covering COLMAP pose recovery, splat
         optimisation and holdout evaluation, to reconstruct real scenes into simulation ready 3D environments.
@@ -647,7 +729,7 @@ footer a{border-bottom-color:#333}
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 (function(){
-  var vids=[].slice.call(document.querySelectorAll('.thumb video'));
+  var vids=[].slice.call(document.querySelectorAll('.thumb video, .wide video'));
   if(!vids.length) return;
   var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(still) return;

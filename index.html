@@ -252,62 +252,28 @@ footer a{border-bottom-color:#333}
       <p class="venue">M.Sc. thesis &middot; IAV GmbH, Berlin, 2026</p>
     </div>
     <div class="wide">
-      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bird's eye view occupancy map with terrain patches and vehicle trajectory">
-        <rect width="416" height="200" fill="#0b110d"/>
-        <g transform="translate(2,0)">
-        <g opacity=".16" stroke="#7dd3a0" stroke-width="1">
-          <path d="M-2 25h416M-2 50h416M-2 75h416M-2 100h416M-2 125h416M-2 150h416M-2 175h416"/>
-          <path d="M-2 0v200M23 0v200M48 0v200M73 0v200M98 0v200M123 0v200M148 0v200M173 0v200M198 0v200M223 0v200M248 0v200M273 0v200M298 0v200M323 0v200M348 0v200M373 0v200M398 0v200"/>
-        </g>
-        <rect x="16" y="22" width="58" height="40" fill="#7dd3a0" opacity=".3"/>
-        <rect x="84" y="16" width="44" height="30" fill="#7dd3a0" opacity=".16"/>
-        <rect x="20" y="74" width="80" height="52" fill="#7dd3a0" opacity=".2"/>
-        <rect x="136" y="36" width="50" height="112" fill="#4f9f78" opacity=".22"/>
-        <circle cx="148" cy="56" r="7" fill="#2f6a4c"/>
-        <circle cx="168" cy="86" r="9.5" fill="#2f6a4c"/>
-        <circle cx="152" cy="118" r="6.5" fill="#2f6a4c"/>
-        <path d="M100 190 L74 128 L126 128 Z" fill="#7dd3a0" opacity=".15"/>
-        <path d="M100 190 C98 156 92 122 82 84" stroke="#eafff0" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
-        <circle cx="100" cy="190" r="4.5" fill="#7dd3a0"/>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          
-        </g>
-      </g>
-      
-        <g>
-        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
-        <g font-family="ui-monospace,Menlo,Consolas,monospace">
-        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">BEV OCCUPANCY</text>
-        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
-        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">monocular video + GNSS</text>
-        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
-        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">confidence weighted</text>
-        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
-        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">multi view occupancy</text>
-        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
-        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">0.10 m / px raster</text>
-        </g>
-        </g>
-      </svg>
+      <img src="research-pipeline.gif" alt="Camera to simulation pipeline: monocular video and camera intrinsics, semantic segmentation, monocular visual odometry, inverse perspective bird's eye view, global map accumulation, scenario export to dSPACE ModelDesk" loading="lazy">
     </div>
     <div class="body">
       <p class="desc">
-        An end to end perception pipeline converting monocular video and GNSS into metric, simulation ready
-        environments with bird's eye view maps, terrain primitives and object trajectories. Confidence weighted
-        multi view occupancy mapping improves terrain consistency and detection of vertical structure, directly
-        analogous to occupancy grid generation for freespace and collision avoidance. Calibration driven range
-        estimation corrected a systematic yaw error in the monocular visual odometry from roughly 71&deg; to about
-        1&deg; median, making the localisation output usable downstream. Trajectories were benchmarked against RTK
-        GNSS with Umeyama alignment, and training free vegetation segmentation drove automated terrain and object
-        extraction into georeferenced, simulation compatible outputs.
-      </p>
+        A pipeline that turns one forward facing camera into a simulation ready off road scenario. Each
+        frame is segmented by a <b>DDRNet-39</b> network over GOOSE labels, collapsed to four terrain classes and
+        cleaned with a range aware ground prior, blob and hole filling and a seven frame majority vote. Monocular
+        visual odometry tracks Harris corners through Lucas Kanade on a ground band and fits a planar three degree
+        of freedom motion under RANSAC, taking its metric scale from the calibrated camera height and pitch rather
+        than from a separate scale recovery step. Frames are projected through a flat ground inverse perspective
+        lookup into a <b>0.10 m</b> bird's eye grid and scattered into a global map as per class votes, so cells the
+        camera never observed stay explicitly unobserved instead of being invented. The resolved map is fitted with
+        an oriented two metre grid, covered by the smallest set of rectangles, and written out as ego centric
+        terrain patches, forest edges and tree groups in a <b>dSPACE ModelDesk</b> scenario.
+</p>
       <div class="pills">
-        <span class="pill k">occupancy grid mapping</span>
-        <span class="pill k">visual odometry</span>
+        <span class="pill k">semantic segmentation</span>
+        <span class="pill k">monocular visual odometry</span>
         <span class="pill k">inverse perspective mapping</span>
-        <span class="pill k">multi view fusion</span>
-        <span class="pill k">RTK GNSS</span>
-        <span class="pill k">ASAM OpenDRIVE</span>
+        <span class="pill k">multi view occupancy</span>
+        <span class="pill k">RTK GNSS benchmarking</span>
+        <span class="pill k">dSPACE ModelDesk</span>
       </div>
       <div class="metrics">
         <div class="metric"><div class="v">71&deg; &rarr; 1&deg;</div><div class="k">median yaw error after calibration</div></div>
@@ -323,6 +289,12 @@ footer a{border-bottom-color:#333}
     rather than the ground, a 6.7 second GNSS time offset that inflated apparent trajectory error by an order of
     magnitude, and a 32 bit latitude field in a J1939 message the documentation described as 31. Most of the
     accuracy came from calibration and timing discipline, not from the model.
+  </p>
+
+  <p class="note">
+    Input footage in the pipeline figure is from the
+    <a href="https://vision.eng.au.dk/fieldsafe/" target="_blank" rel="noopener">FieldSAFE</a> dataset
+    (Kragh et al., <i>Sensors</i> 17(11):2579, 2017), Aarhus University, used under CC BY&#8209;NC&#8209;SA 4.0.
   </p>
 </section>
 

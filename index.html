@@ -46,8 +46,9 @@ h1{font-size:36px;font-weight:600;line-height:1.2;letter-spacing:0;text-align:ce
 .intro .bio{flex:1 1 auto;min-width:0}
 .intro .bio p{margin:0 0 9.6px;color:#dcdce0;font-size:16px;line-height:1.6}
 .intro .bio p:last-of-type{margin-bottom:0}
-.shotcell{flex:0 0 300px;display:flex}
-.shot{width:100%;border-radius:20px;overflow:hidden;background:#111}
+.shotcell{flex:0 0 300px;display:flex;align-items:flex-start}
+/* 49px = the status pill plus its 14px margin, so the portrait ends level with the last line of text */
+.shot{width:100%;height:calc(100% - 49px);border-radius:20px;overflow:hidden;background:#111}
 .shot img{width:100%;height:100%;object-fit:cover}
 .status{
   display:inline-flex;align-items:center;gap:8px;margin-top:14px;
@@ -148,6 +149,17 @@ footer a{border-bottom-color:#333}
   .thumb{flex:0 0 auto;width:100%;max-width:320px;height:auto;aspect-ratio:8/5}
   .tbl{grid-template-columns:1fr;gap:3px 0}
   .tbl dd{margin-bottom:12px}
+}
+
+/* reveal on scroll */
+@media (prefers-reduced-motion: no-preference){
+  .anim .rv{
+    opacity:0;transform:translateY(20px);
+    transition:opacity .62s cubic-bezier(.22,.7,.28,1), transform .62s cubic-bezier(.22,.7,.28,1);
+    will-change:opacity,transform;
+  }
+  .anim .rv.up{transform:translateY(-20px)}
+  .anim .rv.in{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -585,6 +597,73 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     vids.forEach(function(v){io.observe(v);});
   } else { vids.forEach(play); }
   vids.forEach(function(v){ v.addEventListener('loadeddata',function(){ play(v); }); });
+})();
+
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var groups = [
+    ['h1', 0],
+    ['.intro .bio p', 70],
+    ['.shotcell', 0],
+    ['.status', 0],
+    ['.social', 0],
+    ['.affil .a', 60],
+    ['section > h2', 0],
+    ['section > .lead', 0],
+    ['.entry', 0],
+    ['.note', 0],
+    ['.tbl', 0]
+  ];
+  var seen = [];
+  groups.forEach(function(g){
+    [].slice.call(document.querySelectorAll(g[0])).forEach(function(el, i){
+      if(seen.indexOf(el) !== -1) return;
+      seen.push(el);
+      el.classList.add('rv');
+      if(g[1]) el.style.transitionDelay = Math.min(i,5) * g[1] + 'ms';
+    });
+  });
+  document.documentElement.classList.add('anim');
+
+  // remember which way the page is moving, so a block entering from above
+  // slides down into place and one entering from below slides up
+  var lastY = window.scrollY, dir = 1;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    if(y !== lastY){ dir = y > lastY ? 1 : -1; lastY = y; }
+  }, {passive:true});
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.toggle('up', dir < 0);
+        e.target.classList.add('in');
+      } else {
+        // only reset once the block is genuinely off screen, never while it is
+        // still visible, otherwise it fades out under the reader's eyes
+        var r = e.boundingClientRect, vh = window.innerHeight;
+        if(r.bottom < -20 || r.top > vh + 20) e.target.classList.remove('in');
+      }
+    });
+  }, {rootMargin:'0px 0px -60px 0px', threshold:0.05});
+
+  seen.forEach(function(el){ io.observe(el); });
+
+  // safety sweep: whatever the observer's margins do at the edges, nothing that
+  // is on screen once scrolling stops is left invisible
+  var idle;
+  window.addEventListener('scroll', function(){
+    clearTimeout(idle);
+    idle = setTimeout(function(){
+      var vh = window.innerHeight;
+      seen.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top < vh - 20 && r.bottom > 20) el.classList.add('in');
+      });
+    }, 140);
+  }, {passive:true});
 })();
 </script>
 

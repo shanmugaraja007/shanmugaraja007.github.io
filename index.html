@@ -42,12 +42,12 @@ a:hover{color:var(--accent);border-bottom-color:var(--accent-dim)}
 /* ---------- hero ---------- */
 header{padding:45px 0 0}
 h1{font-size:36px;font-weight:600;line-height:1.2;letter-spacing:0;text-align:center;margin:0 0 22px}
-.intro{display:flex;gap:45px;align-items:center}
+.intro{display:flex;gap:45px;align-items:stretch}
 .intro .bio{flex:1 1 auto;min-width:0}
 .intro .bio p{margin:0 0 9.6px;color:#dcdce0;font-size:16px;line-height:1.6}
 .intro .bio p:last-of-type{margin-bottom:0}
-.shotcell{flex:0 0 270px;display:flex;align-items:center;justify-content:center}
-.shot{width:243px;height:243px;border-radius:12%;overflow:hidden;background:#111}
+.shotcell{flex:0 0 300px;display:flex}
+.shot{width:100%;border-radius:20px;overflow:hidden;background:#111}
 .shot img{width:100%;height:100%;object-fit:cover}
 .status{
   display:inline-flex;align-items:center;gap:8px;margin-top:14px;
@@ -141,7 +141,7 @@ footer a{border-bottom-color:#333}
   h2{font-size:24px}
   .intro{flex-direction:column-reverse;align-items:center;gap:22px}
   .shotcell{flex:0 0 auto}
-  .shot{width:200px;height:200px}
+  .shot{width:230px;height:270px}
   .affil{gap:16px;justify-content:center}
   .affil .a{flex:0 0 110px}
   .entry{flex-direction:column;gap:16px}

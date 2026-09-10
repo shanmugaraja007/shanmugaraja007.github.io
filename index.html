@@ -79,12 +79,6 @@ h2{font-size:28px;font-weight:600;line-height:1.19;letter-spacing:0;margin:11.2p
 .lead{color:var(--dim);margin:0 0 20px;font-size:16px;line-height:1.6}
 .lead b{color:var(--fg);font-weight:600}
 
-/* news */
-.news{border:1px solid var(--line);border-radius:12px;background:#000;height:240px;overflow-y:auto}
-.news .row{display:flex;gap:20px;padding:12px 20px;border-bottom:1px solid var(--line)}
-.news .row:last-child{border-bottom:none}
-.news .d{flex:0 0 72px;font-size:13px;color:var(--faint);padding-top:3px;white-space:nowrap}
-.news .t{font-size:16px;line-height:1.6;color:#d6d6da}
 
 /* entry rows */
 .entry{display:flex;gap:36px;padding:20px 0;align-items:flex-start}
@@ -154,8 +148,6 @@ footer a{border-bottom-color:#333}
   .thumb{flex:0 0 auto;width:100%;max-width:320px;height:auto;aspect-ratio:8/5}
   .tbl{grid-template-columns:1fr;gap:3px 0}
   .tbl dd{margin-bottom:12px}
-  .news .row{flex-direction:column;gap:2px}
-  .news .d{flex:none;padding-top:0}
 }
 </style>
 </head>
@@ -225,18 +217,6 @@ footer a{border-bottom-color:#333}
   </div>
 </header>
 
-<section id="news">
-  <h2>News</h2>
-  <div class="news">
-    <div class="row"><div class="d">Sep 2026</div><div class="t">Open to robotics, perception and autonomous driving roles in Germany. Available immediately, German work permit, ready to relocate.</div></div>
-    <div class="row"><div class="d">Aug 2026</div><div class="t">Finished the M.Sc. thesis at IAV: a camera to simulation perception and reconstruction pipeline for autonomous agricultural and off road machines.</div></div>
-    <div class="row"><div class="d">Jul 2026</div><div class="t">Corrected a systematic yaw error in the monocular visual odometry from roughly 71&deg; to about 1&deg; median through calibration driven range estimation.</div></div>
-    <div class="row"><div class="d">Apr 2026</div><div class="t">Started the master thesis at IAV on perception and validation for autonomous driving.</div></div>
-    <div class="row"><div class="d">Jan 2026</div><div class="t">Built a vision based lane following system in CARLA with ROS 2, from semantic segmentation through lateral error to PID steering control.</div></div>
-    <div class="row"><div class="d">Dec 2025</div><div class="t">Published a from scratch ORB-SLAM style visual SLAM pipeline in Python, validated on the KITTI outdoor dataset.</div></div>
-  </div>
-</section>
-
 <section id="research">
   <h2>Research</h2>
   <p class="lead">
@@ -247,9 +227,9 @@ footer a{border-bottom-color:#333}
 
   <div class="entry stack">
     <div class="head">
-      <p class="ttl"><span class="hl">Camera to Simulation Perception and Reconstruction for Autonomous Agricultural and Off Road Machines</span></p>
+      <p class="ttl"><span class="hl">Monocular Semantic Scene Reconstruction for Autonomous Driving Re-Simulation in Off-Road Environments</span></p>
       <p class="meta"><b>Shanmugaraja Pandiyan</b></p>
-      <p class="venue">M.Sc. thesis &middot; IAV GmbH, Berlin, 2026</p>
+      <p class="venue">M.Sc. thesis &middot; IAV GmbH, Gifhorn, 2026</p>
     </div>
     <div class="wide">
       <img src="research-pipeline.gif" alt="Camera to simulation pipeline: monocular video and camera intrinsics, semantic segmentation, monocular visual odometry, inverse perspective bird's eye view, global map accumulation, scenario export to dSPACE ModelDesk" loading="lazy">
@@ -463,7 +443,7 @@ footer a{border-bottom-color:#333}
     <div class="thumb logo"><span class="lt"><img src="iav.png" alt="IAV"></span></div>
     <div class="body">
       <p class="ttl">M.Sc. Thesis Engineer &middot; Perception for Autonomous Machines</p>
-      <p class="meta"><b>IAV GmbH</b>, Berlin, Germany</p>
+      <p class="meta"><b>IAV GmbH</b>, Gifhorn, Germany</p>
       <p class="venue">Apr &ndash; Aug 2026</p>
       <p class="desc">
         Camera to simulation perception and reconstruction pipeline for autonomous agricultural and off road
@@ -471,8 +451,8 @@ footer a{border-bottom-color:#333}
         environments with bird's eye view maps, terrain primitives and object trajectories. Developed confidence
         weighted multi view occupancy mapping, implemented calibration driven range estimation that corrected a
         systematic yaw error from roughly 71&deg; to about 1&deg; median, built a metric GNSS and UTM pose pipeline
-        benchmarked against RTK GNSS with Umeyama alignment, and developed training free vegetation segmentation
-        feeding automated terrain and object extraction into georeferenced simulation outputs.
+        benchmarked against RTK GNSS with Umeyama alignment, and drove automated terrain and object extraction
+        from learned semantic segmentation into georeferenced simulation outputs.
       </p>
       <div class="pills">
         <span class="pill">Python</span><span class="pill">PyTorch</span><span class="pill">OpenCV</span>

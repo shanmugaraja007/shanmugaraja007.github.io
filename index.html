@@ -653,17 +653,21 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 
   // safety sweep: whatever the observer's margins do at the edges, nothing that
   // is on screen once scrolling stops is left invisible
+  function sweep(){
+    var vh = window.innerHeight;
+    seen.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < vh - 20 && r.bottom > 20) el.classList.add('in');
+    });
+  }
   var idle;
   window.addEventListener('scroll', function(){
-    clearTimeout(idle);
-    idle = setTimeout(function(){
-      var vh = window.innerHeight;
-      seen.forEach(function(el){
-        var r = el.getBoundingClientRect();
-        if(r.top < vh - 20 && r.bottom > 20) el.classList.add('in');
-      });
-    }, 140);
+    clearTimeout(idle); idle = setTimeout(sweep, 140);
   }, {passive:true});
+  // a page opened in a background tab has its observer frozen, so reveal
+  // whatever is on screen the moment the tab is actually looked at
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) setTimeout(sweep, 60); });
+  window.addEventListener('pageshow', function(){ setTimeout(sweep, 60); });
 })();
 </script>
 

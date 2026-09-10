@@ -341,51 +341,17 @@ footer a{border-bottom-color:#333}
       <p class="venue">Imitation learning &middot; ROS 2 &middot; NVIDIA Isaac Sim</p>
     </div>
     <div class="wide">
-      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile manipulator learning from teleoperated demonstrations">
-        <rect width="416" height="200" fill="#0d0f12"/>
-        <g transform="translate(2,0)">
-        <rect x="-2" y="150" width="416" height="50" fill="#15191c"/>
-        <rect x="46" y="132" width="62" height="26" rx="5" fill="#1d242a" stroke="#4f9f78" stroke-width="1.2"/>
-        <circle cx="60" cy="160" r="8" fill="#222a30" stroke="#4f9f78" stroke-width="1.2"/>
-        <circle cx="94" cy="160" r="8" fill="#222a30" stroke="#4f9f78" stroke-width="1.2"/>
-        <path d="M96 132 L104 92 L136 74" stroke="#7dd3a0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="104" cy="92" r="4.5" fill="#eafff0"/>
-        <path d="M136 74 l10 -6 M136 74 l8 8" stroke="#7dd3a0" stroke-width="3.5" stroke-linecap="round"/>
-        <rect x="60" y="110" width="18" height="13" rx="2.5" fill="#1d242a" stroke="#f0c86a" stroke-width="1.2"/>
-        <path d="M78 116 L104 104" stroke="#f0c86a" stroke-width=".9" stroke-dasharray="3 3"/>
-        <rect x="146" y="118" width="26" height="26" rx="3" fill="#7dd3a0" opacity=".22" stroke="#7dd3a0" stroke-width="1.2"/>
-        <g stroke="#7dd3a0" stroke-width="1.3" opacity=".7" fill="none" stroke-dasharray="4 3">
-          <path d="M140 80 C158 88 164 102 160 116"/>
-        </g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          
-        </g>
-      </g>
-      
-        <g>
-        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
-        <g font-family="ui-monospace,Menlo,Consolas,monospace">
-        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">IMITATION POLICY</text>
-        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
-        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">teleoperated demos</text>
-        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
-        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">observation &#8594; action</text>
-        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
-        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">ROS 2 execution</text>
-        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
-        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">Gazebo &#183; Isaac Sim</text>
-        </g>
-        </g>
-      </svg>
+      <img src="vla-pipeline.gif" alt="Vision language action policy pipeline: instruction embedding, observation, CNN encoder, spatial softmax, FiLM modulation, action chunk, ROS 2 execution" loading="lazy">
     </div>
     <div class="body">
       <p class="desc">
         A mobile manipulation robot that learns from teleoperated human demonstrations, mapping camera and joint
         state observations directly to actions rather than following hand written trajectories. I collected and
         curated demonstration data in Gazebo and Isaac Sim, implemented the ROS 2 nodes for trajectory execution
-        and motion planning from the learned policy, and evaluated task success and error.
+        and motion planning from the learned policy, and evaluated task success and error. The linked repository holds the policy implementation itself &mdash; FiLM conditioning, the spatial softmax readout, chunked actions and the ablations &mdash; trained and scored in a lightweight standalone simulator.
       </p>
       <div class="pills">
+        <a class="pill gh" href="https://github.com/shanmugaraja007/vla-mobile-manipulation" target="_blank" rel="noopener" aria-label="GitHub repository: policy implementation"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>policy code</a>
         <span class="pill">PyTorch</span><span class="pill">ROS 2</span><span class="pill">Isaac Sim</span>
         <span class="pill">Gazebo</span><span class="pill">MoveIt 2</span>
       </div>
@@ -400,42 +366,8 @@ footer a{border-bottom-color:#333}
       <p class="venue">ROS 2 &middot; personal project</p>
     </div>
     <div class="wide">
-      <svg viewBox="0 0 416 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mobile robot with LiDAR scan, GPS, IMU and camera">
-        <rect width="416" height="200" fill="#0c0f11"/>
-        <g transform="translate(2,0)">
-        <g stroke="#7dd3a0" fill="none" opacity=".3">
-          <circle cx="100" cy="112" r="34" stroke-width="1"/><circle cx="100" cy="112" r="56" stroke-width="1"/><circle cx="100" cy="112" r="78" stroke-width="1"/>
-        </g>
-        <path d="M100 112 L34 66 A82 82 0 0 1 166 66 Z" fill="#7dd3a0" opacity=".1"/>
-        <g stroke="#7dd3a0" stroke-width="1.1" opacity=".55">
-          <path d="M100 112 L44 74"/><path d="M100 112 L74 46"/><path d="M100 112 L126 44"/><path d="M100 112 L158 76"/>
-        </g>
-        <rect x="70" y="104" width="60" height="34" rx="6" fill="#1b2126" stroke="#4f9f78" stroke-width="1.4"/>
-        <circle cx="82" cy="142" r="9" fill="#242c32" stroke="#4f9f78" stroke-width="1.2"/>
-        <circle cx="118" cy="142" r="9" fill="#242c32" stroke="#4f9f78" stroke-width="1.2"/>
-        <circle cx="100" cy="98" r="7" fill="#0f1518" stroke="#7dd3a0" stroke-width="1.6"/>
-        <rect x="76" y="112" width="14" height="10" rx="2" fill="#0f1518" stroke="#f0c86a" stroke-width="1"/>
-        <path d="M124 92 l0 -14 M118 82 l6 -6 6 6" stroke="#f0c86a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#5f7a6c">
-          
-        </g>
-      </g>
-      
-        <g>
-        <path d="M226 26v148" stroke="#7dd3a0" stroke-width="1" opacity=".28"/>
-        <g font-family="ui-monospace,Menlo,Consolas,monospace">
-        <text x="248" y="52" font-size="11" fill="#7dd3a0" letter-spacing="1.6">SENSOR STACK</text>
-        <circle cx="252" cy="80" r="2" fill="#4f9f78"/>
-        <text x="264" y="84" font-size="9.5" fill="#7f9a8c">GNSS + IMU &#8594; EKF pose</text>
-        <circle cx="252" cy="104" r="2" fill="#4f9f78"/>
-        <text x="264" y="108" font-size="9.5" fill="#7f9a8c">LiDAR + camera fusion</text>
-        <circle cx="252" cy="128" r="2" fill="#4f9f78"/>
-        <text x="264" y="132" font-size="9.5" fill="#7f9a8c">TF2 extrinsics</text>
-        <circle cx="252" cy="152" r="2" fill="#4f9f78"/>
-        <text x="264" y="156" font-size="9.5" fill="#7f9a8c">time synchronised</text>
-        </g>
-        </g>
-      </svg>
+      <video src="autonomous-sim.mp4" poster="autonomous-poster.jpg" autoplay loop muted playsinline
+             aria-label="ROS 2 navigation run: SLAM Toolbox occupancy map, Nav2 global and local plans, live LiDAR scan"></video>
     </div>
     <div class="body">
       <p class="desc">
